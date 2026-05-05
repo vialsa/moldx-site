@@ -14,7 +14,7 @@ export default function Home() {
     <main className="overflow-hidden bg-[#e6eff5] bg-[url('/img/gb_hero_accent.png')] bg-fixed bg-cover bg-center">
       
       {/* BARRA DE NAVEGAÇÃO (NAVBAR FIXA) */}
-      <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50 border-b border-slate-200">
+      <header className="hidden md:block fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-12 h-20 flex items-center justify-between">
           <a href="#hero" className="flex items-center">
             <img src="/img/logo.png" alt="Logo Moldx" className="h-10 md:scale-125" />
