@@ -157,7 +157,7 @@ export default function Home() {
                 </div>
                 <h4 className="text-lg font-bold text-slate-900">{nome}</h4>
                 <p className="text-sm font-medium text-slate-500">
-                  {nome === 'Vitor' ? 'Desenvolvedor / Fundador' : 'Especialista Tech'}
+                  {'Dev Especialista Tech'}
                 </p>
               </motion.div>
             ))}
