@@ -1,0 +1,214 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
+export default function Home() {
+  const animacaoScroll = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, ease: "easeOut" },
+    viewport: { once: true, amount: 0.2 }
+  };
+
+  return (
+    <main className="bg-white overflow-hidden">
+      
+      {/* SEÇÃO: HERO (Topo) */}
+      <motion.section 
+        id="hero"
+        className="min-h-[85vh] flex items-center justify-between px-12 py-24 bg-[url('/img/bg_hero_accent.png')] bg-cover bg-no-repeat bg-fixed bg-top"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div className="max-w-2xl">
+                <h1 className="text-5xl font-extrabold text-slate-900 mb-4">Moldx</h1>
+                <h2 className="text-3xl font-light text-slate-600 mb-6">Forjamos o Futuro Digital</h2>
+                <p className="text-lg text-slate-500 mb-10 leading-relaxed">
+                  Uma dev house ágil e inovadora, composta por 5 especialistas apaixonados por transformar ideias em soluções de software impactantes.
+                </p>
+                <a href="#servicos" className="inline-block bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all duration-300">
+                  Conheça Nossos Serviços ↓
+                </a>
+            </div>
+        </div>
+      </motion.section>
+
+      {/* SEÇÃO: NOSSOS SERVIÇOS */}
+      <motion.section {...animacaoScroll} id="servicos" className="py-24 bg-white relative z-10">
+        <div className="max-w-7xl mx-auto px-12">
+          <h2 className="text-4xl font-bold text-center text-slate-900 mb-16">Conheça Nossos Serviços</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(56,189,248,0.15)] hover:border-sky-400 group">
+              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">🖥️</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Desenvolvimento Web</h3>
+              <p className="text-slate-600 leading-relaxed">Plataformas robustas, escaláveis e com design responsivo, focadas em resultados e performance.</p>
+            </div>
+            
+            <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(56,189,248,0.15)] hover:border-sky-400 group">
+              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">📱</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Mobile App Dev</h3>
+              <p className="text-slate-600 leading-relaxed">Aplicativos nativos e híbridos para iOS e Android que encantam usuários e simplificam processos.</p>
+            </div>
+
+            <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(56,189,248,0.15)] hover:border-sky-400 group">
+              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">⚙️</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Consultoria Tech</h3>
+              <p className="text-slate-600 leading-relaxed">Aconselhamento estratégico para escalar sua arquitetura, segurança e infraestrutura.</p>
+            </div>
+
+            <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(56,189,248,0.15)] hover:border-sky-400 group">
+              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">🎨</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">UI/UX Design</h3>
+              <p className="text-slate-600 leading-relaxed">Interfaces intuitivas e modernas focadas na melhor experiência e conversão do usuário.</p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SEÇÃO: PORTFÓLIO */}
+      <motion.section {...animacaoScroll} id="portfolio" className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-12">
+          <h2 className="text-4xl font-bold text-center text-slate-900 mb-16">Projetos em Destaque</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 hover:shadow-sky-400/20 transition-all duration-300 border border-slate-100">
+              <div className="h-56 bg-slate-200 flex items-center justify-center text-slate-400 font-bold border-b-4 border-sky-400">
+                [ Mockup App de Serviços ]
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">App para Barbearias e Serviços</h3>
+                <p className="text-sky-500 font-bold text-xs uppercase tracking-wider mb-4">UI/UX Design & Mobile Dev</p>
+                <span className="text-slate-500 text-sm leading-relaxed">Plataforma centralizada para gestão de clientes, agendas e otimização do modelo de negócios.</span>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 hover:shadow-sky-400/20 transition-all duration-300 border border-slate-100">
+              <div className="h-56 bg-slate-200 flex items-center justify-center text-slate-400 font-bold border-b-4 border-sky-400">
+                [ Mockup Game Mobile ]
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Desenvolvimento de Jogo Mobile</h3>
+                <p className="text-sky-500 font-bold text-xs uppercase tracking-wider mb-4">Godot Engine & Monetização</p>
+                <span className="text-slate-500 text-sm leading-relaxed">Criação de game mobile de alto desempenho, desde a versão alpha até a integração de ads.</span>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 hover:shadow-sky-400/20 transition-all duration-300 border border-slate-100">
+              <div className="h-56 bg-slate-200 flex items-center justify-center text-slate-400 font-bold border-b-4 border-sky-400">
+                [ Mockup Diagrama/Dashboard ]
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Arquitetura Backend & APIs</h3>
+                <p className="text-sky-500 font-bold text-xs uppercase tracking-wider mb-4">Sistemas Web & Banco de Dados</p>
+                <span className="text-slate-500 text-sm leading-relaxed">Estruturação de diagramas de banco de dados e desenvolvimento de APIs robustas para sistemas complexos.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SEÇÃO: NOSSA EQUIPE */}
+      <motion.section {...animacaoScroll} id="equipe" className="py-24 bg-white min-h-screen flex flex-col justify-center">
+        <div className="max-w-7xl mx-auto px-12 w-full">
+          <h2 className="text-4xl font-bold text-center text-slate-900 mb-20">Nossa Equipe de Especialistas</h2>
+          
+          <div className="flex flex-wrap justify-center gap-12">
+            {['Emanuel', 'Felipe', 'Gabriel', 'Gabriel', 'Lucas', 'Vitor'].map((nome, index) => (
+              <motion.div 
+                key={index}
+                className="text-center group"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-32 h-32 bg-slate-100 rounded-full mx-auto mb-6 flex items-center justify-center text-5xl border-4 border-sky-400 shadow-lg shadow-sky-400/20 group-hover:-translate-y-2 transition-transform duration-300">
+                  👨‍💻
+                </div>
+                <h4 className="text-lg font-bold text-slate-900">{nome}</h4>
+                <p className="text-sm font-medium text-slate-500">
+                  {nome === 'Vitor' ? 'Desenvolvedor / Fundador' : 'Especialista Tech'}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SEÇÃO: CONTATO */}
+      <motion.section {...animacaoScroll} id="contato" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-12">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            
+            <div className="flex-1">
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">Pronto para Forjar o Seu Futuro Digital?</h2>
+              <p className="text-lg text-slate-500 mb-10">Mande uma mensagem para a nossa equipe. Estamos prontos para transformar a sua ideia em código.</p>
+              
+              <div className="flex flex-col gap-6">
+                <div className="flex items-center gap-5">
+                  <span className="w-14 h-14 bg-sky-100 text-2xl flex items-center justify-center rounded-full">📍</span>
+                  <div>
+                    <strong className="text-slate-900 block text-lg">Localização</strong>
+                    <p className="text-slate-500">Itapetinga, BA - Brasil</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-5">
+                  <span className="w-14 h-14 bg-sky-100 text-2xl flex items-center justify-center rounded-full">✉️</span>
+                  <div>
+                    <strong className="text-slate-900 block text-lg">E-mail</strong>
+                    <p className="text-slate-500">contato@moldx.com.br</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1 w-full bg-white p-10 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-50">
+              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-5">
+                <input type="text" placeholder="Seu Nome ou Empresa" required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700" />
+                <input type="email" placeholder="Seu melhor e-mail" required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700" />
+                <textarea rows="5" placeholder="Fale um pouco sobre o seu projeto..." required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700 resize-none"></textarea>
+                <button type="submit" className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all duration-300">
+                  Enviar Mensagem
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </motion.section>
+
+      {/* RODAPÉ CENTRALIZADO */}
+      <motion.footer 
+        className="pt-16 pb-8 bg-transparent"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-7xl mx-auto px-12 flex flex-col items-center gap-8 border-t border-slate-200 pt-12">
+          
+          <img src="/img/logo.png" alt="Logo Moldx" className="h-16 scale-150" />
+          
+          <div className="flex gap-8">
+            <a href="#servicos" className="text-slate-900 font-bold hover:text-sky-400 transition-colors">Serviços</a>
+            <a href="#portfolio" className="text-slate-900 font-bold hover:text-sky-400 transition-colors">Portfólio</a>
+            <a href="#equipe" className="text-slate-900 font-bold hover:text-sky-400 transition-colors">Sobre Nós</a>
+            <a href="#contato" className="text-slate-900 font-bold hover:text-sky-400 transition-colors">Contato</a>
+          </div>
+
+          <div className="flex gap-6">
+            <a href="#" className="text-slate-900 hover:text-sky-400 hover:-translate-y-1 transition-all"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+            <a href="#" className="text-slate-900 hover:text-sky-400 hover:-translate-y-1 transition-all"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" className="text-slate-900 hover:text-sky-400 hover:-translate-y-1 transition-all"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+          </div>
+
+          <p className="text-slate-500 text-sm mt-4">&copy; 2026 Moldx. Todos os direitos reservados.</p>
+        </div>
+      </motion.footer>
+
+    </main>
+  );
+}
