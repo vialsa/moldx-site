@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function Home() {
   const animacaoScroll = {
@@ -8,7 +9,10 @@ export default function Home() {
     whileInView: { opacity: 1, y: 0 },
     transition: { duration: 0.7, ease: "easeOut" },
     viewport: { once: true, amount: 0.2 }
-  };
+  }
+  const [membroSelecionado, setMembroSelecionado] = useState(null);
+
+
 
   return (
     <main className="overflow-hidden bg-[#e6eff5] bg-[url('/img/gb_hero_accent.png')] bg-fixed bg-cover bg-center">
@@ -143,25 +147,48 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center text-slate-900 mb-20">Nossa Equipe de Especialistas</h2>
           
           <div className="flex flex-wrap justify-center gap-12">
-            {['Emanuel', 'Felipe', 'Gabriel', 'Gabriel', 'Lucas', 'Vitor'].map((nome, index) => (
+            {[
+              { nome: 'Felipe', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_felipe.jpeg', descricao: 'Em constante evolução no desenvolvimento de códigos de alta performance, busco unir a técnica à visão estratégica de mercado. Foco em utilizar a tecnologia como ferramenta fundamental para o apoio à decisão e geração de resultados nos negócios.' },
+              { nome: 'Gabriel', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_gabriel.jpeg', descricao: 'Entusiasta de tecnologia e solucionador de problemas por natureza. Meu foco é unir código de alta performance a uma visão estratégica de negócios, garantindo que cada linha escrita gere valor real para os nossos clientes.' },
+              { nome: 'Lucas', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_lucas.jpeg', descricao: 'Possuo interesse em todo o processo de construção de sistemas, sempre busco promover boas práticas nos projetos que estou envolvido, afim de entregar produtos eficientes.' },
+              { nome: 'Vitor', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_vitor.jpeg', descricao: 'Sou um desenvolvedor focado em arquiteturas escaláveis de alta performance. Combina o domínio do ecossistema backend, com a experiência prática no desenvolvimento de jogos, unindo lógica apurada e criatividade na criação de projetos eficientes.' },
+              { nome: 'Gabriel', cargo: 'Desenvolvedor', imagem: null },
+              { nome: 'Emanuel', cargo: 'Desenvolvedor', imagem: null },
+            ].map((membro, index) => (
               <motion.div 
                 key={index}
-                className="text-center group"
+                className="text-center group cursor-pointer" // cursor-pointer faz virar a "mãozinha" de clique
+                onClick={() => setMembroSelecionado(membro)} // A MÁGICA DO CLIQUE AQUI!
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="w-32 h-32 bg-white/90 backdrop-blur-sm rounded-full mx-auto mb-6 flex items-center justify-center text-5xl border-4 border-sky-400 shadow-lg shadow-sky-400/20 group-hover:-translate-y-2 transition-transform duration-300">
-                  👨‍💻
+                <div className="w-32 h-32 bg-white/90 backdrop-blur-sm rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-sky-400 shadow-lg shadow-sky-400/20 group-hover:-translate-y-2 transition-transform duration-300 overflow-hidden">
+                  {membro.imagem ? (
+                    <img src={membro.imagem} alt={membro.nome} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="text-5xl">👨‍💻</div>
+                  )}
                 </div>
-                <h4 className="text-lg font-bold text-slate-900">{nome}</h4>
-                <p className="text-sm font-medium text-slate-500">
-                  {'Dev Especialista Tech'}
-                </p>
+                <h4 className="text-lg font-bold text-slate-900">{membro.nome}</h4>
+                <p className="text-sm font-medium text-slate-500">{membro.cargo}</p>
               </motion.div>
             ))}
           </div>
+          {/* CAIXA DE DESCRIÇÃO (Aparece embaixo quando clica) */}
+          {membroSelecionado && (
+            <motion.div 
+              initial={{ opacity: 0, y: 500 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-20 border-1 border-slate-800 bg-white/60 backdrop-blur-md rounded-xl p-10 max-w-4xl mx-auto text-center"
+            >
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">Sobre {membroSelecionado.nome}</h3>
+              <p className="text-xl text-slate-700 font-medium">
+                {membroSelecionado.descricao}
+              </p>
+            </motion.div>
+          )}
         </div>
       </motion.section>
 
@@ -236,5 +263,5 @@ export default function Home() {
       </motion.footer>
 
     </main>
-  );
-}
+  ); 
+} 
