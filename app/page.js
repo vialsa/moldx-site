@@ -10,7 +10,40 @@ export default function Home() {
     transition: { duration: 0.7, ease: "easeOut" },
     viewport: { once: true, amount: 0.2 }
   }
-  const [membroSelecionado, setMembroSelecionado] = useState(null);
+  const [membroSelecionado, setMembroSelecionado] = useState(null)
+  const [enviando, setEnviando] = useState(false)
+  const [statusMensagem, setStatusMensagem] = useState(null)
+  const enviarContato = async (e) => {
+  e.preventDefault(); // Impede a página de recarregar
+  setEnviando(true);
+
+  // Pega os valores digitados
+  const formData = {
+    nome: e.target.nome.value,
+    email: e.target.email.value,
+    mensagem: e.target.mensagem.value,
+  };
+
+  try {
+    // Manda pro nosso backend (route.js)
+    const response = await fetch('/api/contato', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatusMensagem("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+      e.target.reset(); // Limpa os campos
+    } else {
+      setStatusMensagem("Erro ao enviar a mensagem. Tente novamente mais tarde.");
+    }
+    } catch (error) {
+      setStatusMensagem("Erro na conexão. Tente novamente.");
+    } finally {
+      setEnviando(false);
+    }
+};
 
 
 
@@ -220,13 +253,33 @@ export default function Home() {
             </div>
 
             <div className="flex-1 w-full bg-white/90 backdrop-blur-md p-10 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-200">
-              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-5">
-                <input type="text" placeholder="Seu Nome ou Empresa" required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700 bg-white" />
-                <input type="email" placeholder="Seu melhor e-mail" required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700 bg-white" />
-                <textarea rows="5" placeholder="Fale um pouco sobre o seu projeto..." required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700 resize-none bg-white"></textarea>
-                <button type="submit" className="w-full bg-linear-to-r from-cyan-400 to-blue-500 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all duration-300">
-                  Enviar Mensagem
+              <form onSubmit={enviarContato} className="flex flex-col gap-5">
+                
+                {/* Adicionado name="nome" */}
+                <input name="nome" type="text" placeholder="Seu Nome ou Empresa" required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700 bg-white" />
+                
+                {/* Adicionado name="email" */}
+                <input name="email" type="email" placeholder="Seu e-mail" required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700 bg-white" />
+                
+                {/* Adicionado name="mensagem" */}
+                <textarea name="mensagem" rows="5" placeholder="Fale um pouco sobre o seu projeto..." required className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10 transition-all text-slate-700 resize-none bg-white"></textarea>
+                
+                {/* Botão atualizado com feedback de carregamento */}
+                <button 
+                  type="submit" 
+                  disabled={enviando}
+                  className="w-full bg-linear-to-r from-cyan-400 to-blue-500 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all duration-300 disabled:opacity-70 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+                >
+                  {enviando ? 'Enviando...' : 'Enviar Mensagem'}
                 </button>
+
+                {/* Exibição da mensagem de sucesso ou erro do envio */}
+                {statusMensagem && (
+                  <p className={`text-center font-bold mt-2 ${statusMensagem.includes('sucesso') ? 'text-green-500' : 'text-red-500'}`}>
+                    {statusMensagem}
+                  </p>
+                )}
+
               </form>
             </div>
 
