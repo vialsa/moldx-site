@@ -48,7 +48,7 @@ export default function Home() {
 
 
   return (
-    <main className="overflow-hidden bg-[#e6eff5] bg-[url('/img/gb_hero_accent.png')] bg-fixed bg-cover bg-center">
+    <main className="overflow-hidden bg-[#e6eff5] bg-[url('/public/img/gb_hero_accent.png')] bg-fixed bg-cover bg-center">
       
       {/* BARRA DE NAVEGAÇÃO (NAVBAR FIXA) */}
       <header className="hidden md:block fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50 border-b border-slate-200">
@@ -107,14 +107,14 @@ export default function Home() {
             {/* Cartões com fundo semi-transparente (backdrop-blur) para ficarem premium sobre o fundo global */}
             <div className="bg-white/80 backdrop-blur-sm p-10 rounded-3xl border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(56,189,248,0.15)] hover:border-sky-400 group">
               <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">🖥️</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Desenvolvimento Web</h3>
-              <p className="text-slate-600 leading-relaxed">Plataformas robustas, escaláveis e com design responsivo, focadas em resultados e performance.</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Desenvolvimento Web, Mobile e Local</h3>
+              <p className="text-slate-600 leading-relaxed">Desenvolvimento multiplataforma focado em resultados. Entregamos desde sistemas web e apps escaláveis até softwares locais desenhados sob medida para o seu negócio</p>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm p-10 rounded-3xl border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(56,189,248,0.15)] hover:border-sky-400 group">
-              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">📱</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Mobile App Dev</h3>
-              <p className="text-slate-600 leading-relaxed">Aplicativos nativos e híbridos para iOS e Android que encantam usuários e simplificam processos.</p>
+              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">🌐</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Criação de bots e Automatização</h3>
+              <p className="text-slate-600 leading-relaxed">Robôs inteligentes e scripts personalizados para automatizar tarefas repetitivas, otimizando o seu tempo e reduzindo custos operacionais.</p>
             </div>
 
             <div className="bg-white/80 backdrop-blur-sm p-10 rounded-3xl border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(56,189,248,0.15)] hover:border-sky-400 group">
@@ -181,12 +181,12 @@ export default function Home() {
           
           <div className="flex flex-wrap justify-center gap-12">
             {[
+              { nome: 'Emanuel', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_manel.jpeg', descricao: 'Atualmente cursando bacharelado em sistemas de informação, tenho foco no desenvolvimento de jogos sérios e softwares ligados à educação, possuindo inclusive artigos, publicados em congressos.' },
               { nome: 'Felipe', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_felipe.jpeg', descricao: 'Em constante evolução no desenvolvimento de códigos de alta performance, busco unir a técnica à visão estratégica de mercado. Foco em utilizar a tecnologia como ferramenta fundamental para o apoio à decisão e geração de resultados nos negócios.' },
               { nome: 'Gabriel', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_gabriel.jpeg', descricao: 'Entusiasta de tecnologia e solucionador de problemas por natureza. Meu foco é unir código de alta performance a uma visão estratégica de negócios, garantindo que cada linha escrita gere valor real para os nossos clientes.' },
               { nome: 'Lucas', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_lucas.jpeg', descricao: 'Possuo interesse em todo o processo de construção de sistemas, sempre busco promover boas práticas nos projetos que estou envolvido, afim de entregar produtos eficientes.' },
               { nome: 'Vitor', cargo: 'Desenvolvedor', imagem: '/img/equipe/membro_vitor.jpeg', descricao: 'Sou um desenvolvedor focado em arquiteturas escaláveis de alta performance. Combina o domínio do ecossistema backend, com a experiência prática no desenvolvimento de jogos, unindo lógica apurada e criatividade na criação de projetos eficientes.' },
               { nome: 'Gabriel', cargo: 'Desenvolvedor', imagem: null },
-              { nome: 'Emanuel', cargo: 'Desenvolvedor', imagem: null },
             ].map((membro, index) => (
               <motion.div 
                 key={index}
@@ -246,7 +246,7 @@ export default function Home() {
                   <span className="w-14 h-14 bg-white/80 backdrop-blur-sm shadow-sm text-2xl flex items-center justify-center rounded-full border border-sky-100">✉️</span>
                   <div>
                     <strong className="text-slate-900 block text-lg">E-mail</strong>
-                    <p className="text-slate-500">contato@moldx.com.br</p>
+                    <p className="text-slate-500">moldxenterprise@gmail.com</p>
                   </div>
                 </div>
               </div>
